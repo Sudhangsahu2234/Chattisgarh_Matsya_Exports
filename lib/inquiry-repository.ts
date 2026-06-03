@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import type { InquiryRecord } from "@/lib/types";
 
@@ -7,7 +8,7 @@ export interface InquiryRepository {
 }
 
 class JsonFileInquiryRepository implements InquiryRepository {
-  private readonly filePath = path.join(process.cwd(), ".data", "inquiries.json");
+  private readonly filePath = path.join(getWritableDataDir(), "inquiries.json");
 
   async create(record: InquiryRecord): Promise<InquiryRecord> {
     await mkdir(path.dirname(this.filePath), { recursive: true });
@@ -28,3 +29,11 @@ class JsonFileInquiryRepository implements InquiryRepository {
 }
 
 export const inquiryRepository: InquiryRepository = new JsonFileInquiryRepository();
+
+function getWritableDataDir() {
+  if (process.env.VERCEL) {
+    return path.join(os.tmpdir(), "cg-fish-exports");
+  }
+
+  return path.join(process.cwd(), ".data");
+}
