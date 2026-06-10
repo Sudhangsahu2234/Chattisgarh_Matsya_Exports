@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <section className="home-hero">
         <img
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Aeration%20systems%20in%20an%20Aqua%20pond%20near%20Eluru.jpg?width=1800"
+          src="/images/fish/hero_bg.png"
           alt=""
           className="hero-bg"
         />

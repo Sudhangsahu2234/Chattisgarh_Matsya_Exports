@@ -2,45 +2,57 @@ import type { Fish, FisheriesParameter, LicenseCost, Requirement } from "@/lib/t
 
 const imageSources = {
   rohu: {
-    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Rohu%20%28Labeo%20rohita%29.jpg?width=1200",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rohu_(Labeo_rohita).jpg",
-    credit: "Wikimedia Commons / Salil Kumar Mukherjee",
+    url: "/images/fish/rohu.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
     representative: false
   },
   catla: {
-    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Catla%20catla.jpg?width=1200",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Catla_catla.jpg",
-    credit: "Wikimedia Commons",
+    url: "/images/fish/catla.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
     representative: false
   },
   mrigal: {
-    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Mrigel%20fish.jpg?width=1200",
-    sourceUrl: "https://commons.wikimedia.org/wiki/Category:Cirrhinus",
-    credit: "Wikimedia Commons",
+    url: "/images/fish/mirgal.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
+    representative: false
+  },
+  ghaskaat: {
+    url: "/images/fish/ghaskaat.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
+    representative: false
+  },
+  padhina: {
+    url: "/images/fish/padhina.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
     representative: false
   },
   eel: {
-    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Anguilla%20bengalensis%20bengalensis.jpg?width=1200",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Anguilla_bengalensis_bengalensis.jpg",
-    credit: "Wikimedia Commons / Nandini Velho",
-    representative: true
+    url: "/images/fish/bam.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
+    representative: false
+  },
+  kari: {
+    url: "/images/fish/kari.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
+    representative: false
   },
   market: {
-    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Fish%20Market%20Uzan%20Bazar%20India.jpg?width=1200",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Fish_Market_Uzan_Bazar_India.jpg",
-    credit: "Wikimedia Commons / Donvikro",
+    url: "/images/fish/market.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
     representative: true
   },
-  catlaMarket: {
-    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Catla%20fish%20displayed%20for%20sale%20at%20Boiddar%20Bazar%2C%20Sonargaon.jpg?width=1200",
-    sourceUrl: "https://commons.wikimedia.org/wiki/Category:Catla_catla",
-    credit: "Wikimedia Commons",
-    representative: true
-  },
-  shivajiMarket: {
-    url: "https://commons.wikimedia.org/wiki/Special:FilePath/Fish%20on%20sale%20at%20Shivaji%20Market%2C%20Pune%20Camp.jpg?width=1200",
-    sourceUrl: "https://commons.wikimedia.org/wiki/Category:Fishmongers_in_India",
-    credit: "Wikimedia Commons",
+  heroBg: {
+    url: "/images/fish/hero_bg.png",
+    sourceUrl: "#",
+    credit: "AI-generated illustration",
     representative: true
   }
 } satisfies Record<string, Fish["image"]>;
@@ -86,8 +98,8 @@ export const commercialFish: Fish[] = [
     localName: "घांस काट",
     englishName: "Ghaskaat",
     commercialValue: "Medium",
-    notes: "Local commercial listing from the CSV. Image is representative because the scientific name was not provided.",
-    image: imageSources.catlaMarket
+    notes: "Local commercial listing from the CSV. Image is AI-generated based on regional descriptions.",
+    image: imageSources.ghaskaat
   },
   {
     id: "padhina",
@@ -97,7 +109,7 @@ export const commercialFish: Fish[] = [
     englishName: "Padhina",
     commercialValue: "Medium",
     notes: "Regional trade name from the source list. Confirm exact species before final export documentation.",
-    image: imageSources.market
+    image: imageSources.padhina
   },
   {
     id: "bam",
@@ -106,7 +118,7 @@ export const commercialFish: Fish[] = [
     localName: "बाम",
     englishName: "Bam (Freshwater Eel)",
     commercialValue: "Medium",
-    notes: "Eel-type listing with representative Indian mottled eel photography for visual guidance.",
+    notes: "Eel-type listing with AI-generated Indian mottled eel illustration for visual guidance.",
     image: imageSources.eel
   },
   {
@@ -116,8 +128,8 @@ export const commercialFish: Fish[] = [
     localName: "कारी",
     englishName: "Curry",
     commercialValue: "Medium",
-    notes: "Local market name from the CSV. Image is representative until scientific identification is confirmed.",
-    image: imageSources.shivajiMarket
+    notes: "Local market name from the CSV. Image is AI-generated until scientific identification is confirmed.",
+    image: imageSources.kari
   }
 ];
 
@@ -142,11 +154,11 @@ const localNames = [
 
 const representativeImages = [
   imageSources.market,
-  imageSources.catlaMarket,
-  imageSources.shivajiMarket,
   imageSources.rohu,
   imageSources.catla,
-  imageSources.mrigal
+  imageSources.mrigal,
+  imageSources.ghaskaat,
+  imageSources.padhina
 ];
 
 export const localFish: Fish[] = localNames.map(([localName, englishName], index) => ({
@@ -156,7 +168,7 @@ export const localFish: Fish[] = localNames.map(([localName, englishName], index
   localName,
   englishName,
   commercialValue: "Local heritage species",
-  notes: "Indigenous Chhattisgarh market name from the CSV. Photo is representative pending exact scientific validation.",
+  notes: "Indigenous Chhattisgarh market name from the CSV. Photo is AI-generated pending exact scientific validation.",
   image: {
     ...representativeImages[index % representativeImages.length],
     representative: true
